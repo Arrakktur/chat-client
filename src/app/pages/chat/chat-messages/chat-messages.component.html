@@ -1,0 +1,36 @@
+<div class="chatMessage">
+  <div class="chatMessage__wrapper">
+    <div class="chatMessage__header">
+      <div class="chatMessage__title">{{ titleChat }}</div>
+    </div>
+    <div class="chatMessage__content content">
+      <div class="chatMessage__contentWrapper">
+        <div class="content__noMessage" *ngIf="!messages.length">Сообщений пока нет</div>
+        <div class="content__messages" *ngIf="messages.length">
+          <div class="content__messageBlock" [class.content__messageBlock_this]="message.thisMessage" *ngFor="let message of messages">
+            <div class="content__messageBlockImgWrapper">
+              <img class="content__messageBlockImg" [src]="message.avatar">
+            </div>
+            <div class="content__message"
+                 [class.content__message_input]="!message.thisMessage"
+                 [class.content__message_output]="message.thisMessage">
+              <div class="content__messageAuthor">
+                {{ message.thisMessage ? 'Вы' : message.author }}
+              </div>
+              {{ message.text }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chatMessage__controls">
+      <mat-form-field class="example-full-width chatMessage__controlsInput">
+        <mat-label>Сообщение</mat-label>
+        <mat-hint align="start"><strong>Не разглашайте личную информацию</strong></mat-hint>
+        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        <input class="chatMessage__input" matInput #message maxlength="256" placeholder="Напишите ваше сообщение...">
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="chatMessage__controlsButton">Отправить</button>
+    </div>
+  </div>
+</div>

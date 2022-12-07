@@ -1,0 +1,15 @@
+.chat {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #eee;
+}
+
+.chat__wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.chat__chatMessage{
+  width: 100%;
+}

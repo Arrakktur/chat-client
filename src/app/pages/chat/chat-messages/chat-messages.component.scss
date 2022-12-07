@@ -1,0 +1,98 @@
+.chatMessage{
+  width: 100%;
+  height: 100%;
+}
+
+.chatMessage__wrapper{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatMessage__header{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid silver;
+}
+
+.chatMessage__content{
+  height: 100%;
+}
+
+.chatMessage__controls{
+  border-top: 1px solid silver;
+  display: flex;
+}
+
+.chatMessage__contentWrapper{
+  padding: 20px;
+}
+
+.chatMessage__controlsInput{
+  padding-left: 20px;
+  padding-right: 20px;
+  width: calc(100% - 120px);
+  background-color: #fff;
+}
+
+.content__noMessage{
+  font-size: 24px;
+  color: #999;
+}
+
+.chatMessage__controlsButton{
+  width: 120px;
+  height: 100%;
+  border-radius: 0;
+}
+
+.content__messageBlock{
+  display: flex;
+  gap: 20px;
+  align-items: end;
+}
+
+.content__messageBlock_this{
+  flex-direction: row-reverse;
+}
+
+.content__messages{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content__message{
+  border: 1px solid silver;
+  padding: 20px;
+  width: max-content;
+  border-radius: 10px;
+}
+
+.content__messageBlockImg{
+  width: 100%;
+  height: 100%;
+}
+
+.content__messageBlockImgWrapper{
+  width: 50px;
+  height: 50px;
+}
+
+.content__messageAuthor{
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.content__message_input{
+  background-color: #fff;
+}
+
+.content__message_output{
+  background-color: #0084ff;
+  color: #fff;
+  margin-left: auto;
+}

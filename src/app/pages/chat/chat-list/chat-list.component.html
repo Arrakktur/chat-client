@@ -1,0 +1,30 @@
+<div class="chatList">
+  <div class="chatList__wrapper" [class.chatList__wrapper_isOpen]="isOpen">
+    <div class="chatList__search">
+      <input type="search" class="chatList__inputSearch">
+    </div>
+    <div class="chatList__chats">
+      <div class="chatList__chat chat" *ngFor="let chat of chats">
+        <div class="chat__avatar">
+          <img [src]="chat.avatar" [alt]="chat.avatar" class="chat__avatarImg">
+        </div>
+        <div *ngIf="isOpen">
+          <div class="chat__title">{{ chat.title }}</div>
+          <div class="chat__lastMessage">{{ chat.lastMessage }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="chatList__bottom">
+      <div *ngIf="isOpen" class="chatList__iconWrapper" (click)="logout()">
+        <mat-icon class="chatList__iconBack" aria-hidden="false" aria-label="Example home icon" fontIcon="home">
+          account_circle
+        </mat-icon>
+      </div>
+      <div class="chatList__iconWrapper" (click)="changeStateOpen()" [class.chatList__iconWrapper_rotate]="!isOpen">
+        <mat-icon class="chatList__iconBack" aria-hidden="false" aria-label="Example home icon" fontIcon="home">
+          keyboard_arrow_left
+        </mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

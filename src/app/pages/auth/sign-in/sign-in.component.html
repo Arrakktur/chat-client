@@ -1,0 +1,31 @@
+<div class="signIn">
+  <div class="signIn__content">
+  <h1>Вход</h1>
+  <form class="signIn__form form" [formGroup]="loginForm">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Логин</mat-label>
+        <input matInput formControlName="login">
+        <mat-error *ngIf="loginForm.controls['login'].touched && loginForm.controls['login'].invalid">
+          <span *ngIf="loginForm.controls['login'].errors!['required']">Поле обязательное</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input matInput  formControlName="password"  [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Скрыть пароль'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
+          <span *ngIf="loginForm.controls['password'].errors!['required']">Поле обязательное</span>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="submit()">Войти</button>
+  </form>
+    <div class="signIn__info">
+      <mat-spinner *ngIf="loading"></mat-spinner>
+      <div class="signIn__errorMessage" *ngIf="errorMessage"><b>Ошибка</b> {{errorMessage}}</div>
+    </div>
+  </div>
+</div>
+
