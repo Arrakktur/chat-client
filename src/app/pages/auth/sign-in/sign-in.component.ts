@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../services/auth.service";
 import {LoginUserDto} from "../../../dto/user/login-user.dto";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
@@ -14,13 +15,17 @@ export class SignInComponent implements OnInit {
   loading: boolean = false;
   errorMessage: string | null = null;
   hide = true;
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       login: [null, [Validators.required]],
-      password: [null, Validators.required]
+      password: [null, [Validators.required, Validators.minLength(8)]]
     });
+  }
+
+  navigate(link: string): void{
+    this.router.navigateByUrl(link);
   }
 
   submit() {
@@ -33,7 +38,7 @@ export class SignInComponent implements OnInit {
       login: String(this.loginForm.get('login')?.value),
       password: String(this.loginForm.get('password')?.value),
     }
-    this.authService.login(loginUserDto).subscribe((data) => {
+    this.authService.signIn(loginUserDto).subscribe((data) => {
       this.errorMessage = null;
       this.loading = false;
       if (!data){

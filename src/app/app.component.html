@@ -1,9 +1,5 @@
 <div class="app">
-  <div class="app__content" *ngIf="!(loadingInProcess | async)">
+  <div class="app__content">
     <router-outlet></router-outlet>
-  </div>
-  <div class="app__loading" *ngIf="loadingInProcess | async">
-    <mat-spinner></mat-spinner>
-    <p>Подождите немного, идет загрузка приложения!</p>
   </div>
 </div>

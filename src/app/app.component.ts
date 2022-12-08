@@ -11,11 +11,6 @@ import {Location} from "@angular/common";
 })
 export class AppComponent implements OnInit {
   loadingInProcess: BehaviorSubject<false> = new BehaviorSubject<false>(false);
-  isLoggin!: boolean;
   constructor(private authService: AuthService, private router: Router, private location: Location) {}
-  ngOnInit(){
-    this.authService.isLoggin.subscribe((data) => {
-      this.isLoggin = data;
-    })
-  }
+  ngOnInit(){}
 }

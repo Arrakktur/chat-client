@@ -1,1 +1,56 @@
-<p>sign-up works!</p>
+<div class="signUp">
+  <div class="signUp__content">
+    <h1>Регистрация</h1>
+
+    <form class="signUp__form form" [formGroup]="regForm">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Логин</mat-label>
+        <input matInput formControlName="login">
+        <mat-error *ngIf="regForm.controls['login'].touched && regForm.controls['login'].invalid">
+          <span *ngIf="regForm.controls['login'].errors!['required']">Поле обязательное</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Имя</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="regForm.controls['name'].touched && regForm.controls['name'].invalid">
+          <span *ngIf="regForm.controls['name'].errors!['required']">Поле обязательное</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Скрыть пароль'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="regForm.controls['password'].touched && regForm.controls['password'].invalid">
+          <span *ngIf="regForm.controls['password'].errors!['required']">Поле обязательное</span>
+          <span *ngIf="regForm.controls['password'].errors!['minlength']">Минимум 8 символов</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Повторите пароль</mat-label>
+        <input matInput formControlName="replayPassword" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Скрыть пароль'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="regForm.controls['replayPassword'].touched && regForm.controls['replayPassword'].invalid">
+          <span *ngIf="regForm.controls['replayPassword'].errors!['required']">Поле обязательное</span>
+          <span *ngIf="regForm.controls['password'].errors!['minlength']">Минимум 8 символов</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="signUp__controls">
+        <button mat-raised-button color="primary" (click)="submit()">Регистрация</button>
+        <button mat-raised-button (click)="navigate('auth/sign-in')">Войти</button>
+      </div>
+    </form>
+
+    <div class="signUp__info">
+      <mat-spinner *ngIf="loading"></mat-spinner>
+      <div class="signUp__errorMessage" *ngIf="errorMessage"><b>Ошибка</b> {{errorMessage}}</div>
+    </div>
+  </div>
+</div>
+

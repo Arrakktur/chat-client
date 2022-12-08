@@ -3,12 +3,12 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 import { RequestService } from "./request.service";
 import { LoginUserDto } from "../dto/user/login-user.dto";
 import {Router} from "@angular/router";
+import {CreateUserDto} from "../dto/user/create-user.dto";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public isLoggin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   public token!: string;
   constructor(private requestService: RequestService, private router: Router) {}
 
@@ -18,17 +18,25 @@ export class AuthService {
   checkJWT(): Observable<boolean> {
     const token = localStorage.getItem('token');
     if (token) {
-      return this.requestService.checkJwt({jwt: token});
+      return this.requestService.checkJwt$({jwt: token});
     }
     return of(false);
   }
 
   /**
-   * Авторизация
-   * @param {LoginUserDto} dto Доступы пользователя
+   * Регистрация пользователя
+   * @param {CreateUserDto} dto Параметры пользователя
    */
-  login(dto: LoginUserDto): Observable<any> {
-    const obs = this.requestService.login$(dto);
+  signUp(dto: CreateUserDto): Observable<any> {
+    return this.requestService.signUp$(dto);
+  }
+
+  /**
+   * Авторизация пользователя
+   * @param {LoginUserDto} dto Параметры пользователя
+   */
+  signIn(dto: LoginUserDto): Observable<any> {
+    const obs = this.requestService.signIn$(dto);
     obs.subscribe((data) => {
       if (data) {
         this.router.navigateByUrl('chats');

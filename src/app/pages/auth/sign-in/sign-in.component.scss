@@ -23,3 +23,9 @@
   color: red;
   width: 100%
 }
+
+.signIn__controls{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

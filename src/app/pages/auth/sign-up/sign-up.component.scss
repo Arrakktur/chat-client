@@ -1,0 +1,31 @@
+.signUp__content{
+  width: 400px;
+  margin: 100px auto;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+}
+
+.signUp__info{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.signUp__errorMessage{
+  font-size: 14px;
+  background-color: #ffc9c9;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 6px solid red;
+  color: red;
+  width: 100%
+}
+
+.signUp__controls{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

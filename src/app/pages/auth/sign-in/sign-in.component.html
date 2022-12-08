@@ -18,9 +18,13 @@
         </button>
         <mat-error *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">
           <span *ngIf="loginForm.controls['password'].errors!['required']">Поле обязательное</span>
+          <span *ngIf="loginForm.controls['password'].errors!['minlength']">Минимум 8 символов</span>
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="submit()">Войти</button>
+      <div class="signIn__controls">
+        <button mat-raised-button color="primary" (click)="submit()">Войти</button>
+        <button mat-raised-button (click)="navigate('auth/sign-up')">Регистрация</button>
+      </div>
   </form>
     <div class="signIn__info">
       <mat-spinner *ngIf="loading"></mat-spinner>
