@@ -1,16 +1,31 @@
 <div class="chatList">
   <div class="chatList__wrapper" [class.chatList__wrapper_isOpen]="isOpen">
     <div class="chatList__search">
-      <input type="search" class="chatList__inputSearch">
+      <input type="search" class="chatList__inputSearch" [(ngModel)]="searchValue" (change)="searchUsers()" placeholder="Введите логин пользователя">
     </div>
     <div class="chatList__chats">
-      <div class="chatList__chat chat" *ngFor="let chat of chats">
-        <div class="chat__avatar">
-          <img [src]="chat.avatar" [alt]="chat.avatar" class="chat__avatarImg">
+      <div *ngIf="!isOpenSearchWindow">
+        <div *ngIf="chats.length">
+          <div class="chatList__chat chat" *ngFor="let chat of chats" [class.chat_active]="chat.active" (click)="changeActiveChat(chat)">
+            <div class="chat__avatar">
+              <img [src]="chat.avatar" [alt]="chat.avatar" class="chat__avatarImg">
+            </div>
+            <div *ngIf="isOpen">
+              <div class="chat__title">{{ chat.title }}</div>
+              <div class="chat__lastMessage">{{ chat.lastMessage }}</div>
+            </div>
+          </div>
         </div>
-        <div *ngIf="isOpen">
-          <div class="chat__title">{{ chat.title }}</div>
-          <div class="chat__lastMessage">{{ chat.lastMessage }}</div>
+        <div *ngIf="!chats.length" class="chat__noChats">
+          На данный момент чатов нет
+        </div>
+      </div>
+      <div class="chatList__listUsers" *ngIf="isOpenSearchWindow">
+        <div class="chatList__user" *ngFor="let user of searchUsersData" (click)="selectUser(user.login)">
+          @{{ user.login }}
+        </div>
+        <div class="chatList__user chatList__user_noSearch" *ngIf="!searchUsersData?.length">
+          Пользователь не найден
         </div>
       </div>
     </div>

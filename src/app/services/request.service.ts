@@ -14,6 +14,18 @@ export class RequestService {
   constructor(private http: HttpClient) {
   }
 
+  getChatList$(): Observable<any> {
+    return this.doGetRequest('chats');
+  }
+
+  getUserList$(login: string): Observable<any> {
+    return this.doGetRequest(`users/${login}`);
+  }
+
+  getAllUsers$(): Observable<any> {
+    return this.doGetRequest('getAllUsers');
+  }
+
   checkJwt$(params: CheckJwtDto): Observable<any> {
     return this.doPostRequest('checkJwt', params);
   }
@@ -26,12 +38,12 @@ export class RequestService {
     return this.doPostRequest('signIn', params);
   }
 
-  doPostRequest(action: string, params: any): Observable<any> {
+  private doPostRequest(action: string, params?: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/${action}`,
       params);
   }
 
-  doGetRequest(action: string, params: any): Observable<any> {
+  private doGetRequest(action: string, params?: any): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/${action}`,
       params);
   }

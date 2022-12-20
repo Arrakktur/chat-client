@@ -24,7 +24,7 @@
                 [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="regForm.controls['password'].touched && regForm.controls['password'].invalid">
+        <mat-error *ngIf="regForm.controls['password'].touched && regForm.controls['password'].invalid && regForm.controls['password'].errors">
           <span *ngIf="regForm.controls['password'].errors!['required']">Поле обязательное</span>
           <span *ngIf="regForm.controls['password'].errors!['minlength']">Минимум 8 символов</span>
         </mat-error>
@@ -36,7 +36,7 @@
                 [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-        <mat-error *ngIf="regForm.controls['replayPassword'].touched && regForm.controls['replayPassword'].invalid">
+        <mat-error *ngIf="regForm.controls['replayPassword'].touched && regForm.controls['replayPassword'].invalid && regForm.controls['password'].errors">
           <span *ngIf="regForm.controls['replayPassword'].errors!['required']">Поле обязательное</span>
           <span *ngIf="regForm.controls['password'].errors!['minlength']">Минимум 8 символов</span>
         </mat-error>
@@ -50,6 +50,7 @@
     <div class="signUp__info">
       <mat-spinner *ngIf="loading"></mat-spinner>
       <div class="signUp__errorMessage" *ngIf="errorMessage"><b>Ошибка</b> {{errorMessage}}</div>
+      <div class="signUp__successMessage" *ngIf="successMessage"><b>Успех</b> {{successMessage}}</div>
     </div>
   </div>
 </div>

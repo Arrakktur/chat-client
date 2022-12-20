@@ -1,4 +1,4 @@
-.chatList__wrapper{
+.chatList__wrapper {
   flex-direction: column;
   width: 90px;
   display: flex;
@@ -7,48 +7,68 @@
   padding-top: 20px;
   color: #fff;
   height: 100vh;
+  transition: .1s;
 }
 
-.chatList__wrapper_isOpen{
+.chatList__wrapper_isOpen {
   width: 300px;
 }
 
-.chatList__search{
+.chatList__search {
   border-bottom: 2px solid #363d45;
   padding-bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
-.chatList__inputSearch{
-  width: 80%;
-  border-radius: 50px;
-  padding: 10px;
-  background-color: #363d45;
-  border: 1px solid #1d2229;
-  color: #fff
-}
-
-.chatList__chats{
+.chatList__chats {
   width: 100%;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.chat{
-  justify-content: center;
-  padding: 10px;
+.chatList__listUsers {
+  width: 100%;
+  max-height: 400px;
+}
+
+.chat {
+  padding: 10px 10px 10px 20px;
   width: 100%;
   display: flex;
+  justify-content: start;
   gap: 20px;
   align-items: center;
   cursor: pointer;
 
   &:hover {
-    background-color: #333;
+    background-color: #244887;
   }
+}
+
+.chat_active {
+  background-color: #244887;
+}
+
+.chatList__user {
+  padding: 10px 10px 10px 40px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #244887;
+  }
+}
+
+.chatList__inputSearch {
+  width: 80%;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: #363d45;
+  border: 1px solid #1d2229;
+  color: #fff
 }
 
 .chat__avatar {
@@ -75,7 +95,7 @@
   justify-content: center;
   margin: 20px 20px 20px 20px;
 
-  &:hover{
+  &:hover {
     background-color: #fff;
 
     .chatList__iconBack{
@@ -84,13 +104,20 @@
   }
 }
 
-.chatList__iconWrapper_rotate{
+.chatList__iconWrapper_rotate {
   transform: rotate(180deg);
 }
 
-.chatList__bottom{
+.chatList__bottom {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
   width: 100%;
+}
+
+.chat__noChats {
+  padding-inline: 20px;
+  font-size: 16px;
+  text-align: center;
+  opacity: .7;
 }

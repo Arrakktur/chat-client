@@ -10,7 +10,6 @@ import {Location} from "@angular/common";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  loadingInProcess: BehaviorSubject<false> = new BehaviorSubject<false>(false);
   constructor(private authService: AuthService, private router: Router, private location: Location) {}
   ngOnInit(){}
 }

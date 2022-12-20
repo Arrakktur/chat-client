@@ -24,6 +24,16 @@
   width: 100%
 }
 
+.signUp__successMessage{
+  font-size: 14px;
+  background-color: #c9ffcc;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 6px solid green;
+  color: green;
+  width: 100%
+}
+
 .signUp__controls{
   display: flex;
   flex-direction: column;

@@ -14,6 +14,7 @@ export class SignUpComponent implements OnInit {
   public regForm!: FormGroup;
   loading: boolean = false;
   errorMessage: string | null = null;
+  successMessage: string | null = null;
   hide = true;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
@@ -45,9 +46,12 @@ export class SignUpComponent implements OnInit {
     }
     this.authService.signUp(regUserDto).subscribe((data) => {
       this.errorMessage = null;
+      this.successMessage = null;
       this.loading = false;
       if (!data) {
         this.errorMessage = 'Неизвестная ошибка при регистрации';
+      } else {
+        this.successMessage = 'Регистрация прошла успешно';
       }
     });
   }

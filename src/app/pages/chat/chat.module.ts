@@ -4,12 +4,13 @@ import {ChatProfileComponent} from "./chat-profile/chat-profile.component";
 import {ChatListComponent} from "./chat-list/chat-list.component";
 import {ChatMessagesComponent} from "./chat-messages/chat-messages.component";
 import {CommonModule} from "@angular/common";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {ChatRoutingModule} from "./chat-routing.module";
 import {BrowserModule} from "@angular/platform-browser";
+import {ChatService} from "../../services/chat.service";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {BrowserModule} from "@angular/platform-browser";
     MatInputModule,
     MatIconModule,
     ChatRoutingModule,
+    FormsModule,
   ]
 })
 export class ChatModule{}

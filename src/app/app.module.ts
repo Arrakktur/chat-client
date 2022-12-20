@@ -17,6 +17,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {RouterModule} from "@angular/router";
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import {ChatModule} from "./pages/chat/chat.module";
+import {ChatService} from "./services/chat.service";
+import {InitialService} from "./services/initial.service";
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import {ChatModule} from "./pages/chat/chat.module";
   ],
   providers: [
     FormBuilder,
+    ChatService,
+    InitialService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
